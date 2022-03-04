@@ -44,9 +44,6 @@
   (let [[theme change-theme] (hooks/use-state "dark")]
     (dom/header
      (dom/nav {:classes ["nota-nav"]}
-              (dom/button {:onClick #(js/window.open "https://github.com/rafaeldelboni/nota" "_blank")
-                           :classes ["nota-btn" "nota-btn--source"]}
-                          "Source")
               (dom/button {:classes ["nota-btn" "nota-btn--theme"]
                            :onClick (toggle-theme theme change-theme)}
                           (if (= theme "dark")
