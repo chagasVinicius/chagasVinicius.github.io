@@ -2,6 +2,6 @@
          "home" {:page/name "home", :page/path "pages/home.md", :page/hidden false}
          "about" {:page/name "about", :page/path "pages/about.md", :page/hidden false}}
 
- :posts {}
+ :posts {"there-and-back-again" {:post/name "There and back again", :post/description nil, :post/timestamp 1646529807247, :post/path "posts/there-and-back-again.md", :post/tags #{"bioinformatics"}}}
 
  :tags {}}
