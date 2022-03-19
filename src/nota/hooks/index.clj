@@ -43,7 +43,7 @@
   (merge {:path      (string/replace (output-dir build-state)
                                      (re-pattern (asset-path build-state))
                                      "")
-          :title     "Nota"
+          :title     "Saraiva"
           :links     [{:href "./img/favicon.png"
                        :rel "icon"}
                       {:href "https://fonts.googleapis.com"
