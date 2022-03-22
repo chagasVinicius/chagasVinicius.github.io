@@ -41,7 +41,7 @@
 
 (defsc Header [_this {:keys [list-pages]}]
   {:use-hooks? true}
-  (let [[theme change-theme] (hooks/use-state "dark")]
+  (let [[theme change-theme] (hooks/use-state "light")]
     (dom/header
      (dom/nav {:classes ["nota-nav"]}
               (dom/button {:classes ["nota-btn" "nota-btn--theme"]

@@ -1,10 +1,8 @@
-:root, :root.dark {
-  /* colors */
-  --black: rgba(0, 0, 0, 0.87);
-  --gray: gainsboro;
-  --white: whitesmoke;
-  --accent-color: #FF9B49;
-  --fade-bg-color: #262626;
+:root, :root.light {
+  --bg-color: var(--white);
+  --font-base-color: var(--black);
+  --title-color: var(--black);
+  --fade-bg-color: #ededed;
 
   --bg-color: var(--black);
   --font-base-color: var(--white);
@@ -18,11 +16,13 @@
   --max-width: 50em;
 }
 
-:root.light {
-  --bg-color: var(--white);
-  --font-base-color: var(--black);
-  --title-color: var(--black);
-  --fade-bg-color: #ededed;
+:root.dark {
+  /* colors */
+  --black: rgba(0, 0, 0, 0.87);
+  --gray: gainsboro;
+  --white: whitesmoke;
+  --accent-color: #FF9B49;
+  --fade-bg-color: #262626;
 }
 
 ::selection {
