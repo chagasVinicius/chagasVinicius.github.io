@@ -14,15 +14,11 @@ jobs:
         id: build
         run: |
           npm run build
-          # <Not provided for brevity>
-          # At a minimum this step should build the static files of your site
-          # <Not provided for brevity>
-
       - name: Upload static files as artifact
         id: deployment
         uses: actions/upload-pages-artifact@v3 # or specific "vX.X.X" version tag for this action
         with:
-          path: public/
+          path: ./public
 
   # Deployment job
   deploy:
