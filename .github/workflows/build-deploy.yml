@@ -9,16 +9,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: Build static files
         id: build
         run: |
           npm install
           npm run build
+        with:
+          source: ./
       - name: Upload static files as artifact
         id: deployment
         uses: actions/upload-pages-artifact@v3 # or specific "vX.X.X" version tag for this action
-        with:
-          path: ./public
 
   # Deployment job
   deploy:
