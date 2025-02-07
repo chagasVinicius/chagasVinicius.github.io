@@ -7,12 +7,12 @@ on:
 jobs:
   # Build job
   build:
-    # Specify runner +  build & upload the static files as an artifact
     runs-on: ubuntu-latest
     steps:
       - name: Build static files
         id: build
         run: |
+          npm install
           npm run build
       - name: Upload static files as artifact
         id: deployment
