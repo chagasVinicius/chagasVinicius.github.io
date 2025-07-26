@@ -10,7 +10,8 @@ export default async function HomePage() {
   const videos = await getAllVideos()
   const recentPosts = posts.slice(0, 3)
   const recentVideos = videos.slice(0, 3)
-
+  // Simple flag to show/hide videos section
+  const showVideos = false // Change to true when you have videos
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -47,62 +48,63 @@ export default async function HomePage() {
       </section>
 
       {/* Latest Videos Section */}
-      <section id="videos" className="py-16 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">Últimos Vídeos</h2>
-            <p className="text-xl text-slate-600">Tutoriais recentes para você aprender Blender</p>
+      {showVideos && (
+        <section id="videos" className="py-16 px-4 bg-white">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-slate-900 mb-4">Últimos Vídeos</h2>
+              <p className="text-xl text-slate-600">Tutoriais recentes para você aprender Blender</p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {recentVideos.length > 0 ? (
+                recentVideos.map((video) => <VideoCard key={video.slug} video={video} />)
+              ) : (
+                <>
+                  <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div className="aspect-video bg-slate-200 flex items-center justify-center relative group">
+                      <Play className="w-16 h-16 text-slate-400 group-hover:text-red-500 transition-colors" />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-semibold text-slate-900 mb-2">Introdução ao Modeling no Blender 3.0</h3>
+                      <div className="flex items-center text-sm text-slate-500 mb-3">
+                        <Calendar className="w-4 h-4 mr-1" />
+                        Publicado em: 15/07/2023
+                      </div>
+                      <p className="text-slate-600">Aprenda as técnicas básicas de modelagem 3D para iniciantes.</p>
+                    </div>
+                  </div>
+                  <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div className="aspect-video bg-slate-200 flex items-center justify-center relative group">
+                      <Play className="w-16 h-16 text-slate-400 group-hover:text-red-500 transition-colors" />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-semibold text-slate-900 mb-2">Animando Personagens com Rigging</h3>
+                      <div className="flex items-center text-sm text-slate-500 mb-3">
+                        <Calendar className="w-4 h-4 mr-1" />
+                        Publicado em: 08/07/2023
+                      </div>
+                      <p className="text-slate-600">Crie rigs profissionais para animação de personagens.</p>
+                    </div>
+                  </div>
+                  <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div className="aspect-video bg-slate-200 flex items-center justify-center relative group">
+                      <Play className="w-16 h-16 text-slate-400 group-hover:text-red-500 transition-colors" />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-semibold text-slate-900 mb-2">Iluminação Realista com Cycles</h3>
+                      <div className="flex items-center text-sm text-slate-500 mb-3">
+                        <Calendar className="w-4 h-4 mr-1" />
+                        Publicado em: 01/07/2023
+                      </div>
+                      <p className="text-slate-600">Domine técnicas de iluminação para renders fotorealistas.</p>
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {recentVideos.length > 0 ? (
-              recentVideos.map((video) => <VideoCard key={video.slug} video={video} />)
-            ) : (
-              <>
-                <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                  <div className="aspect-video bg-slate-200 flex items-center justify-center relative group">
-                    <Play className="w-16 h-16 text-slate-400 group-hover:text-red-500 transition-colors" />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold text-slate-900 mb-2">Introdução ao Modeling no Blender 3.0</h3>
-                    <div className="flex items-center text-sm text-slate-500 mb-3">
-                      <Calendar className="w-4 h-4 mr-1" />
-                      Publicado em: 15/07/2023
-                    </div>
-                    <p className="text-slate-600">Aprenda as técnicas básicas de modelagem 3D para iniciantes.</p>
-                  </div>
-                </div>
-                <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                  <div className="aspect-video bg-slate-200 flex items-center justify-center relative group">
-                    <Play className="w-16 h-16 text-slate-400 group-hover:text-red-500 transition-colors" />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold text-slate-900 mb-2">Animando Personagens com Rigging</h3>
-                    <div className="flex items-center text-sm text-slate-500 mb-3">
-                      <Calendar className="w-4 h-4 mr-1" />
-                      Publicado em: 08/07/2023
-                    </div>
-                    <p className="text-slate-600">Crie rigs profissionais para animação de personagens.</p>
-                  </div>
-                </div>
-                <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                  <div className="aspect-video bg-slate-200 flex items-center justify-center relative group">
-                    <Play className="w-16 h-16 text-slate-400 group-hover:text-red-500 transition-colors" />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold text-slate-900 mb-2">Iluminação Realista com Cycles</h3>
-                    <div className="flex items-center text-sm text-slate-500 mb-3">
-                      <Calendar className="w-4 h-4 mr-1" />
-                      Publicado em: 01/07/2023
-                    </div>
-                    <p className="text-slate-600">Domine técnicas de iluminação para renders fotorealistas.</p>
-                  </div>
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-      </section>
-
+        </section>
+      )}
       {/* Blog Section */}
       <section id="blog" className="py-16 px-4 bg-slate-50">
         <div className="max-w-6xl mx-auto">
